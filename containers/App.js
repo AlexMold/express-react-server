@@ -1,17 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
 
 class App extends Component {
   render() {
-    const { todos, actions, dataFORM } = this.props
+    const { todos, actions } = this.props
+    const forms = dataFORM.form;
+    console.log(forms);
+    const formElement = forms.map(form => {
+      return <MainSection key={form._id} todos={todos} actions={actions} sectionForm={form} />
+    })
     return (
       <div>
-        <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} dataFORM={dataFORM} />
+        {formElement}
       </div>
     )
   }

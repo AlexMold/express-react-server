@@ -10,13 +10,6 @@ class TodoTextInput extends Component {
   }
 
   handleSubmit(e) {
-    const text = e.target.value.trim()
-    if (e.which === 13) {
-      this.props.onSave(text)
-      if (this.props.newTodo) {
-        this.setState({ text: '' })
-      }
-    }
   }
 
   handleChange(e) {
